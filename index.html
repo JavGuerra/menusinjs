@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo hamburger sin JS</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <style>
+
+        /* hamburguesa */
+        #burger {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #burger span {
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #toggle-burger {
+            display: none;
+        }
+
+        #toggle-burger:checked+#burger span:first-child {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            margin-top: 5px;
+        }
+
+        #toggle-burger:checked+#burger span:nth-child(2) {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+
+        #toggle-burger:checked+#burger span:nth-child(3) {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            margin-top: -5px;
+        }
+
+        /* menú hamburguesa */
+        #burger-menu {
+            position: fixed;
+            top: 52px;
+            left: 0px;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #toggle-burger:checked~#burger-menu {
+            min-height: 280px;
+            max-height: 100%;
+            overflow: auto;
+        }
+
+        /* lector de pantalla */
+        .sr {
+            position: absolute;
+            overflow: hidden;
+            /* top: -9999px o left:-9999px; o text-indent:-9999px; */
+            text-indent: -9999px;
+        }
+
+    </style>
+
+</head>
+
+<body id="inicio">
+
+    <nav id="barra" class="navbar is-fixed-top" aria-label="Barra de navegación">
+        <div class="container is-widescreen">
+
+            <div class="navbar-brand">
+
+                <a class="navbar-item" href="#inicio" role="banner"><b>Logo</b></a>
+
+                <div class="navbar-burger">
+                    <input id="toggle-burger" type="checkbox" />
+                    <label id="burger" for="toggle-burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <em class="sr">Icono de menú desplegable</em>
+                    </label>
+                    <div id="burger-menu" class="menu" role="navigation" aria-label="Menú desplegable">
+                        <br />
+                        <p class="menu-label no-spaced">Menú</p>
+                        <ul class="menu-list">
+                            <li><a href="#opcion1">Opción 1</a></li>
+                            <li><a href="#opcion2">Opción 1</a></li>
+                            <li><a href="#opcion3">Opción 3</a></li>
+                        </ul>
+                        <br />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="navbar-menu" role="navigation" aria-label="Menú principal">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="#opcion1"><span>Opción 1</span></a>
+                    <a class="navbar-item" href="#opcion2"><span>Opción 2</span></a>
+                    <a class="navbar-item" href="#opcion3"><span>Opción 3</span></a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</body>
+
+</html>
